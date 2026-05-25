@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Konversi Bilangan Biner ↔ Desimal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #0078D7;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .output {
+      margin-top: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Konversi Biner ↔ Desimal</h1>
+
+  <label for="desimalInput">Masukkan Bilangan Desimal:</label>
+  <input type="number" id="desimalInput" placeholder="Contoh: 2025">
+  <button onclick="convertToBinary()">Konversi ke Biner</button>
+
+  <label for="binerInput">Masukkan Bilangan Biner:</label>
+  <input type="text" id="binerInput" placeholder="Contoh: 1001011010101010">
+  <button onclick="convertToDecimal()">Konversi ke Desimal</button>
+
+  <div class="output" id="resultBox">
+    <strong>Hasil akan muncul di sini...</strong>
+  </div>
+
+  <script>
+    function convertToBinary() {
+      let desimal = document.getElementById("desimalInput").value;
+      if (desimal === "") {
+        alert("Masukkan angka desimal terlebih dahulu.");
+        return;
+      }
+      let biner = parseInt(desimal).toString(2);
+      document.getElementById("resultBox").innerHTML = `<strong>${desimal}</strong> dalam biner adalah <strong>${biner}</strong>`;
+    }
+
+    function convertToDecimal() {
+      let biner = document.getElementById("binerInput").value;
+      if (biner === "") {
+        alert("Masukkan angka biner terlebih dahulu.");
+        return;
+      }
+      let desimal = parseInt(biner, 2);
+      if (isNaN(desimal)) {
+        document.getElementById("resultBox").innerHTML = "Input biner tidak valid!";
+      } else {
+        document.getElementById("resultBox").innerHTML = `<strong>${biner}</strong> dalam desimal adalah <strong>${desimal}</strong>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
